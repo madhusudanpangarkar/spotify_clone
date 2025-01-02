@@ -3,10 +3,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:spotify/common/widgets/appbar/app_bar.dart';
 import 'package:spotify/common/widgets/button/basic_app_button.dart';
 import 'package:spotify/core/configs/assets/app_vectors.dart';
-import 'package:spotify/presentation/auth/pages/signin.dart';
+import 'package:spotify/presentation/auth/pages/signup.dart';
 
-class Signup extends StatelessWidget{
-  Signup({super.key});
+class Signin extends StatelessWidget{
+  Signin({super.key});
   
   @override
   Widget build(BuildContext context){
@@ -24,17 +24,15 @@ class Signup extends StatelessWidget{
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            _registerText(),
+            _signinText(),
             const SizedBox(height: 50,),
-            _fullNameField(context),
-            const SizedBox(height: 20,),
             _emailField(context),
             const SizedBox(height: 20,),
             _passwordField(context),
             const SizedBox(height: 30,),
             BasicAppButton(
               onPressed: () {},
-              title: 'Create An Account',
+              title: 'Sign In',
             )
           ],
         ),
@@ -43,9 +41,9 @@ class Signup extends StatelessWidget{
   }
 
 
-  Widget _registerText(){
+  Widget _signinText(){
     return const Text(
-      'Register',
+      'Sign In',
       style: TextStyle(
         fontWeight: FontWeight.bold,
         fontSize: 25
@@ -54,20 +52,10 @@ class Signup extends StatelessWidget{
     );
   }
 
-  Widget _fullNameField(BuildContext context){
-    return TextField(
-      decoration: const InputDecoration(
-        hintText: 'Full Name'
-      ).applyDefaults(
-        Theme.of(context).inputDecorationTheme
-      ),
-    );
-  }
-
   Widget _emailField(BuildContext context){
     return TextField(
       decoration: const InputDecoration(
-        hintText: 'Enter Email'
+        hintText: 'Enter Username or Email'
       ).applyDefaults(
         Theme.of(context).inputDecorationTheme
       ),
@@ -91,7 +79,7 @@ class Signup extends StatelessWidget{
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Text(
-            'Do you have an account?',
+            'Not a Member?',
             style: TextStyle(
               fontWeight: FontWeight.w500,
               fontSize: 14,
@@ -102,12 +90,12 @@ class Signup extends StatelessWidget{
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => Signin(),
-                ) 
+                  builder: (context) => Signup(),
+                )
               );
             },
             child: const Text(
-              'Sign In',
+              'Register Now',
               style: const TextStyle(
                 color: Colors.blue
               ),
